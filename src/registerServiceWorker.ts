@@ -2,9 +2,12 @@
 
 import { register } from 'register-service-worker';
 
-if (process.env.NODE_ENV === 'production') {
+if (true || process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
+      window.addEventListener(
+        'ping', (data) => console.log('SW:', data),
+      );
       console.log(
         'App is being served from cache by a service worker.\n'
         + 'For more details, visit https://goo.gl/AFskqB',
